@@ -1,13 +1,14 @@
 package icu.fordring.ref.impl;
 
+import com.google.common.base.Functions;
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 import icu.fordring.ref.Ref;
 import icu.fordring.ref.Watcher;
 import icu.fordring.ref.refs.ComputedRef;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 /**
  * @author fordring
  * @since 2022/8/6
@@ -36,8 +37,19 @@ public class MemRefContext extends BasicRefContext{
     }
 
     @Override
-    protected Set<ComputedRef<?>> getRely(Ref<?> ref) {
-        return relyMap.get(ref);
+    protected Iterable<ComputedRef<?>> getRely(Ref<?> ref) {
+        Set<ComputedRef<?>> refs = relyMap.get(ref);
+        if (refs==null) return null;
+        Map<ComputedRef<?>, Set<ComputedRef<?>>> map = new HashMap<>();
+        LinkedList<ComputedRef<?>> queue = new LinkedList<>(refs);
+        while(!queue.isEmpty()) {
+            ComputedRef<?> r = queue.pollFirst();
+            if(map.containsKey(r)) continue;
+            Set<ComputedRef<?>> computedRefs = Optional.ofNullable(relyMap.get(r)).orElse(Collections.emptySet());
+            map.put(r, computedRefs);
+            queue.addAll(computedRefs);
+        }
+        return topologicalSort(map);
     }
 
     @Override

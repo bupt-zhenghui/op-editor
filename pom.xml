@@ -11,6 +11,7 @@
         <module>ref-core</module>
         <module>ref-mem</module>
         <module>ref-spi</module>
+        <module>formula</module>
     </modules>
     <packaging>pom</packaging>
 

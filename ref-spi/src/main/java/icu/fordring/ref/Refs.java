@@ -20,7 +20,10 @@ public class Refs {
     }
 
     public static <T> ComputedRef<T> computed(Supplier<T> supplier, RefType<T> retType) {
-        return refFactory.newComputed(supplier, retType);
+        return refFactory.newComputed(supplier, retType, false);
+    }
+    public static <T> ComputedRef<T> computed(Supplier<T> supplier, RefType<T> retType, boolean lazy) {
+        return refFactory.newComputed(supplier, retType, lazy);
     }
 
     public static <T> void watch(Ref<T> ref, Watcher<T> watcher) {

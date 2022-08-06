@@ -22,4 +22,17 @@ public class ComputedMemRef<T> extends ComputedRef<T> implements WithId{
     public Integer id() {
         return id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComputedMemRef<?> that = (ComputedMemRef<?>) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

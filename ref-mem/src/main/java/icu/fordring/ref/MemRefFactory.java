@@ -27,9 +27,9 @@ public class MemRefFactory implements RefFactory{
     }
 
     @Override
-    public <T> ComputedRef<T> newComputed(Supplier<T> supplier, RefType<T> retType) {
+    public <T> ComputedRef<T> newComputed(Supplier<T> supplier, RefType<T> retType, boolean lazy) {
         ComputedMemRef<T> ref = new ComputedMemRef<>(nextId(), supplier, retType, context, store);
-        ref.update(false);
+        if(!lazy) ref.update(false);
         return ref;
     }
 
