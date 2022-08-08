@@ -41,6 +41,11 @@ public abstract class BasicRefContext implements RefContext {
     public <T> void emitChange(Ref<T> ref, T oldValue) {
         startUpdate();
         UpdateContext updateContext = this.updateContext.get();
+        if(updateContext.reentrant>1) {
+            updateContext.refs.add(ref);
+            stopUpdate();
+            return;
+        }
         int count = updateContext.refs.count(ref);
         if(count>0) {
             stopUpdate();
