@@ -19,7 +19,7 @@ public abstract class BasicRef<T> implements Ref<T> {
 
     @Override
     public T value() {
-        context.emitGet(this);
+        if(context!=null) context.emitGet(this);
         return get();
     }
 

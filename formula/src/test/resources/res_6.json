@@ -1,0 +1,26 @@
+{
+    "$schema": "formula-schema.json",
+    "operatorName": "add-int",
+    "args": [
+        {
+            "operatorName": "sub-int",
+            "args": [
+                {
+                    "operatorName": "ref",
+                    "literal": "10",
+                    "literalType": "int"
+                },
+                {
+                    "operatorName": "ref",
+                    "literal": "5",
+                    "literalType": "int"
+                }
+            ]
+        },
+        {
+            "operatorName": "ref",
+            "literalType": "int",
+            "literal": "1"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "$schema": "formula-schema.json",
+    "operatorName": "multi-int",
+    "args": [
+        {
+            "operatorName": "ref",
+            "literalType": "int",
+            "literal": "2"
+        },
+        {
+            "operatorName": "add-int",
+            "args": [
+                {
+                    "operatorName": "ref",
+                    "literalType": "int",
+                    "literal": "1"
+                },
+                {
+                    "operatorName": "multi-int",
+                    "args": [
+                        {
+                            "operatorName": "ref",
+                            "literal": "2",
+                            "literalType": "int"
+                        },
+                        {
+                            "operatorName": "ref",
+                            "refId": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "operatorName": "ref",
+            "literalType": "int",
+            "literal": "3"
+        }
+    ]
+}

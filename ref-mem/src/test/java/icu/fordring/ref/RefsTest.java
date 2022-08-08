@@ -1,9 +1,9 @@
 package icu.fordring.ref;
 
 import icu.fordring.ref.refs.ComputedRef;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,13 +23,19 @@ class RefsTest {
     public void computed() {
         MutRef<Integer> ref1 = Refs.ref(1);
         MutRef<Integer> ref2 = Refs.ref(2);
-        ComputedRef<Integer> computed1 = Refs.computed(() -> ref1.value()+1, Types.INT_TYPE);
+        ComputedRef<Integer> computed1 = Refs.computed(
+                () -> {
+                    Integer value = ref1.value();
+                    return value+1;
+                },
+                Types.INT_TYPE);
+
+        ComputedRef<Integer> computed2 = Refs.computed(() -> ref2.value()+computed1.value()-1, Types.INT_TYPE);
 
         assertEquals(2, computed1.value());
         ref1.set(2);
         assertEquals(3, computed1.value());
 
-        ComputedRef<Integer> computed2 = Refs.computed(() -> ref2.value()+computed1.value()-1, Types.INT_TYPE);
 
         assertEquals(4, computed2.value());
         ref1.set(12);
@@ -44,8 +50,12 @@ class RefsTest {
         ComputedRef<Integer> computed3 = Refs.computed(() -> ref1.value()+computed1.value()+computed2.value(), Types.INT_TYPE);
         ComputedRef<Integer> computed4 = Refs.computed(() -> ref1.value()+computed1.value()+computed2.value()+computed3.value(), Types.INT_TYPE);
 
-        ref1.set(1);
+        assertEquals(0, computed1.value());
+        assertEquals(0, computed2.value());
+        assertEquals(0, computed3.value());
+        assertEquals(0, computed4.value());
 
+        ref1.set(1);
         assertEquals(1, computed1.value());
         assertEquals(2, computed2.value());
         assertEquals(4, computed3.value());

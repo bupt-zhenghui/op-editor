@@ -14,10 +14,10 @@ import java.util.function.Supplier;
  * @since 2022/8/6
  */
 public class MemRefFactory implements RefFactory{
-    private final MemRefStore store = new MemRefStore();
-    private final MemRefContext context = new MemRefContext();
-
     private final AtomicInteger iota = new AtomicInteger(1);
+
+    public final MemRefStore store = new MemRefStore(iota);
+    public final MemRefContext context = new MemRefContext();
 
     @Override
     public MutRef<Integer> newRef(Integer val) {
@@ -38,7 +38,7 @@ public class MemRefFactory implements RefFactory{
         context.addWatch(ref, watcher);
     }
 
-    private int nextId() {
+    public int nextId() {
         return iota.getAndIncrement();
     }
 }

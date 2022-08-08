@@ -1,0 +1,32 @@
+{
+    "definitions": {
+        "formula": {
+            "type": "object",
+            "properties": {
+                "operatorName": {
+                    "type": "string",
+                    "enum": ["add-int","sub-int","ref","multi-int"]
+                },
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "type" : "object",
+                        "$ref": "#/definitions/formula"
+                    }
+                },
+                "refId": {
+                    "type": "number"
+                },
+                "literal": {
+                    "type":"string"
+                },
+                "literalType": {
+                    "type":"string",
+                    "enum": ["int"]
+                }
+            },
+            "required": ["operatorName"]
+        }
+    },
+    "$ref": "#/definitions/formula"
+}

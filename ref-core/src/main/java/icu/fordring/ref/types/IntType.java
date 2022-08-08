@@ -8,6 +8,11 @@ import icu.fordring.ref.RefType;
  */
 public class IntType implements RefType<Integer> {
     @Override
+    public String typeName() {
+        return "int";
+    }
+
+    @Override
     public Class<Integer> typeClass() {
         return Integer.class;
     }
