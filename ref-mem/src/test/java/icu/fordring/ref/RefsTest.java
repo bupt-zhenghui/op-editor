@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author fordring
  * @since 2022/8/6
  */
-class RefsTest {
+public class RefsTest {
     private final Logger logger = LoggerFactory.getLogger(RefsTest.class);
 
     @Test
@@ -87,7 +87,7 @@ class RefsTest {
     }
 
     @Test
-    void watch() {
+    public void watch() {
         MutRef<Integer> ref1 = Refs.ref(1);
         AtomicInteger i1 = new AtomicInteger(0);
         Refs.watch(ref1, (r, oldVal)->{

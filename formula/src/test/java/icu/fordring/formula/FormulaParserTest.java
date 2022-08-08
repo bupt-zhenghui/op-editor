@@ -19,7 +19,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
  * @author fordring
  * @since 2022/8/8
  */
-class FormulaParserTest {
+public class FormulaParserTest {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public FormulaParserTest() {
