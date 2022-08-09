@@ -1,7 +1,7 @@
 package com.bytedance.opeditor.user.controller;
 
 import com.bytedance.opeditor.api.UserApi;
-import com.bytedance.opeditor.api.dto.AuthForm;
+import com.bytedance.opeditor.api.dto.user.AuthForm;
 import com.bytedance.opeditor.domain.User;
 import com.bytedance.opeditor.user.service.UserService;
 import com.bytedance.opeditor.user.utils.SessionUtils;

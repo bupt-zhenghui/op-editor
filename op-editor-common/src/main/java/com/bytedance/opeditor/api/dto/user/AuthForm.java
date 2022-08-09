@@ -1,4 +1,4 @@
-package com.bytedance.opeditor.api.dto;
+package com.bytedance.opeditor.api.dto.user;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

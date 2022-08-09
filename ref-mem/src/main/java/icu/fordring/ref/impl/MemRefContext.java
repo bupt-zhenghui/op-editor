@@ -23,10 +23,14 @@ public class MemRefContext extends BasicRefContext{
     private final Map<Ref<?>, Set<ComputedRef<?>>> relyMap = new HashMap<>();
     private final Map<Ref<?>, Set<Watcher<Object>>> watchMap = new HashMap<>();
 
-    @Override
     public <T1, T2> void addRely(Ref<T1> tar, ComputedRef<T2> rely) {
         if(!relyMap.containsKey(tar)) relyMap.put(tar, new HashSet<>());
         relyMap.get(tar).add(rely);
+    }
+
+    @Override
+    public <T> void setRely(Set<Ref<?>> refs, ComputedRef<T> tComputedRef) {
+        refs.forEach(r->addRely(r, tComputedRef));
     }
 
     @SuppressWarnings("unchecked")

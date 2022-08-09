@@ -1,6 +1,6 @@
 package com.bytedance.opeditor.api;
 
-import com.bytedance.opeditor.api.dto.AuthForm;
+import com.bytedance.opeditor.api.dto.user.AuthForm;
 import com.bytedance.opeditor.domain.User;
 import com.bytedance.opeditor.web.response.EmptyR;
 import com.bytedance.opeditor.web.response.R;

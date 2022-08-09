@@ -16,11 +16,7 @@ public interface RefContext {
     void startSniff();
     Set<Ref<?>> stopSniff();
 
-    <T1,T2> void addRely(Ref<T1> tar, ComputedRef<T2> rely);
-
-    default <T> void addRely(Set<Ref<?>> refs, ComputedRef<T> tComputedRef) {
-        refs.forEach(r->addRely(r, tComputedRef));
-    }
+    <T> void setRely(Set<Ref<?>> refs, ComputedRef<T> tComputedRef);
 
     <T> void addWatch(Ref<T> ref, Watcher<T> watcher);
 }

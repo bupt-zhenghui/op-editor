@@ -36,7 +36,7 @@ public class ComputedRef<T> extends BasicRef<T> {
         context.startSniff();
         T t = supplier.get();
         Set<Ref<?>> refs = context.stopSniff();
-        context.addRely(refs, this);
+        context.setRely(refs, this);
         T oldVal = value();
         store.setValue(this, t);
         if(!Objects.equals(t, oldVal) && emit) {

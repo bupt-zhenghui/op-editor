@@ -1,6 +1,6 @@
 package com.bytedance.opeditor.user.service;
 
-import com.bytedance.opeditor.api.dto.AuthForm;
+import com.bytedance.opeditor.api.dto.user.AuthForm;
 import com.bytedance.opeditor.constant.AuthLevels;
 import com.bytedance.opeditor.domain.User;
 import com.bytedance.opeditor.user.entity.UserEntity;
