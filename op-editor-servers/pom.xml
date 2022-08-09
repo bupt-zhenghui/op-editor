@@ -9,12 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ref-spi</artifactId>
+    <artifactId>op-editor-servers</artifactId>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.bytedance</groupId>
-            <artifactId>ref-core</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>op-editor-server-simple</module>
+        <module>op-editor-server-user</module>
+        <module>op-editor-server-hello</module>
+        <module>op-editor-gateway</module>
+    </modules>
+
 </project>

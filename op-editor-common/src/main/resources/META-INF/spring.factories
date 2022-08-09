@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.bytedance.opeditor.web.WebConfiguration,\
+  com.bytedance.opeditor.auth.UserAuthConfiguration

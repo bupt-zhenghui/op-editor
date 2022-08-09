@@ -1,0 +1,50 @@
+{
+  "properties": [
+    {
+      "name": "app.session.type",
+      "type": "java.lang.String",
+      "description": "session类型.",
+      "defaultValue": "mem"
+    },
+    {
+      "name": "app.cache.type",
+      "type": "java.lang.String",
+      "description": "缓存类型."
+    },
+    {
+      "name": "spring.redis.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否开启redis."
+    },
+    {
+      "name": "app.cache.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否开启缓存."
+    }
+  ],
+  "hints": [
+    {
+      "name": "app.session.type",
+      "values": [
+        {
+          "value": "mem",
+          "description": "保存在内存中."
+        },
+        {
+          "value": "redis",
+          "description": "保存在redis中."
+        }
+      ]
+    },
+    {
+      "name": "app.cache.type",
+      "values": [
+        {
+          "value": "mem",
+          "description": "保存至内存中."
+        },
+        {
+          "value": "redis",
+          "description": "保存至redis中."
+      }]
+    }]}

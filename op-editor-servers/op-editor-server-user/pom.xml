@@ -3,18 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>op-editor</artifactId>
+        <artifactId>op-editor-servers</artifactId>
         <groupId>com.bytedance</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ref-spi</artifactId>
+    <artifactId>op-editor-server-user</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.bytedance</groupId>
-            <artifactId>ref-core</artifactId>
+            <artifactId>op-editor-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bytedance</groupId>
+            <artifactId>op-editor-rpc</artifactId>
         </dependency>
     </dependencies>
 </project>

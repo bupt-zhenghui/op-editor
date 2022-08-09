@@ -1,0 +1,21 @@
+app:
+  nacos:
+    host: ${NACOS:127.0.0.1:8848}
+spring:
+  application:
+    name: hello
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: ${app.nacos.host}
+      config:
+        # 配置中心地址
+        server-addr: ${app.nacos.host}
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+          - share.${spring.cloud.nacos.config.file-extension}
+server:
+  port: 0

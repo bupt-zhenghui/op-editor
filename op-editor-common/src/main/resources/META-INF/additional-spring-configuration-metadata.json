@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "app.services.user",
+      "type": "java.lang.String",
+      "description": "用户服务."
+    }
+  ]
+}
