@@ -43,10 +43,9 @@ public class FormulaParser {
         Object refId = formulaObject.getRefId();
         List<FormulaObject> args = formulaObject.getArgs();
         if(!Strings.isNullOrEmpty(literalType)) {
-            LiteralParser parser = PARSER_MAP.get(literalType);
-            if(parser==null) throw new IllegalArgumentException("找不到支持["+literalType+"]类型字面量的解析器");
-            Ref<T> parseRes = (Ref<T>) parser.parse(formulaObject.getLiteral(), literalType);
-            formula.setRef(parseRes);
+            formula.setRef(
+                    parseLiteral(formulaObject.getLiteral(), literalType)
+            );
         } else if(refId !=null) {
             Ref<T> ref = getRef.apply(refId);
             if(ref==null) throw new IllegalArgumentException("找不到ref["+refId+"]");
@@ -56,5 +55,12 @@ public class FormulaParser {
             formula.setArgs(argList);
         }
         return formula;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> Ref<T> parseLiteral(String value, String type) {
+        LiteralParser parser = PARSER_MAP.get(type);
+        if(parser==null) throw new UnsupportedOperationException("找不到支持["+type+"]类型字面量的解析器");
+        return (Ref<T>) parser.parse(value, type);
     }
 }

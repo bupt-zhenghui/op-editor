@@ -25,7 +25,8 @@
                         },
                         {
                             "operatorName": "ref",
-                            "refId": 1
+                            "literal": "2",
+                            "literalType": "int"
                         }
                     ]
                 }
