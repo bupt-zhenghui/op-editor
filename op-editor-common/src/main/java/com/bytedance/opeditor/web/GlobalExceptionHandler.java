@@ -45,6 +45,7 @@ public class GlobalExceptionHandler implements InitializingBean {
             MissingServletRequestParameterException.class})
     public EmptyR handleIllegalArgumentException(HttpServletResponse response, Exception e) {
         dealWithException(e, HttpStatus.BAD_REQUEST.value(), response);
+        log.debug("", e);
         return R.error(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), e.getLocalizedMessage());
     }
 
@@ -52,17 +53,20 @@ public class GlobalExceptionHandler implements InitializingBean {
     public EmptyR handleUnsupportedOperationException(HttpServletResponse response, Exception e) {
         log.warn("[{}]失败: 该接口尚未开放({})", WebContext.fmtReq(), e.getMessage());
         response.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
+        log.debug("", e);
         return R.error(HttpStatus.SERVICE_UNAVAILABLE.value(),
                 HttpStatus.SERVICE_UNAVAILABLE.getReasonPhrase(), "服务未开放");
     }
 
     @ExceptionHandler({BindException.class})
     public EmptyR handleBindException(HttpServletResponse response, BindException e) {
+        log.debug("", e);
         return handleValidException(response, e.getBindingResult(), e.getClass().getSimpleName());
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public EmptyR handleMethodArgumentNotValidException(HttpServletResponse response, MethodArgumentNotValidException e) {
+        log.debug("", e);
         return handleValidException(response, e.getBindingResult(), e.getClass().getSimpleName());
     }
 

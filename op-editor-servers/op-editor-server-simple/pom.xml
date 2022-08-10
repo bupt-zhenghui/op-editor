@@ -20,6 +20,10 @@
             <groupId>com.bytedance</groupId>
             <artifactId>op-editor-hello-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.bytedance</groupId>
+            <artifactId>op-editor-ref</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

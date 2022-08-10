@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(value = "app.session.type", havingValue = "com/bytedance/redis")
+@ConditionalOnProperty(value = "app.session.type", havingValue = "redis")
 @EnableRedisHttpSession(redisNamespace = "session")
 public class RedisSessionConfiguration {
     @PostConstruct

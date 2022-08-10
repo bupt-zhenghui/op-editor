@@ -18,7 +18,6 @@ import javax.annotation.Resource;
  * @since 2021/11/18
  */
 @Configuration
-@ConditionalOnProperty(value = "spring.redis.enabled")
 public class CommonRedisConfiguration {
 
     @Bean

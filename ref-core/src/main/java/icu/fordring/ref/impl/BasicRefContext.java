@@ -4,12 +4,14 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import icu.fordring.ref.Ref;
 import icu.fordring.ref.RefContext;
+import icu.fordring.ref.SkippedUpdateException;
 import icu.fordring.ref.Watcher;
 import icu.fordring.ref.refs.ComputedRef;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * @author fordring
@@ -31,8 +33,9 @@ public abstract class BasicRefContext implements RefContext {
 
     /**
      * 返回与ref相通的节点图的拓扑排序
+     * @return
      */
-    protected abstract Iterable<ComputedRef<?>> getRely(Ref<?> ref);
+    protected abstract List<ComputedRef<?>> getRely(Ref<?> ref);
 
     protected abstract <T> Set<Watcher<Object>> getWatch(Ref<T> ref);
 
@@ -53,7 +56,9 @@ public abstract class BasicRefContext implements RefContext {
             return;
         }
         updateContext.refs.add(ref);
-        Optional.ofNullable(getRely(ref)).ifPresent(rs-> rs.forEach(ComputedRef::update));
+        try {
+            Optional.ofNullable(getRely(ref)).ifPresent(rs-> rs.forEach(ComputedRef::update));
+        } catch (SkippedUpdateException ignore) {}
         boolean isStopped = stopUpdate();
         if(isStopped) {
             updateContext.refs.forEach(r->{
@@ -110,7 +115,7 @@ public abstract class BasicRefContext implements RefContext {
         return refs;
     }
 
-    protected Iterable<ComputedRef<?>> topologicalSort(Map<ComputedRef<?>, Set<ComputedRef<?>>> map) {
+    protected List<ComputedRef<?>> topologicalSort(Map<ComputedRef<?>, Set<ComputedRef<?>>> map) {
         LinkedList<ComputedRef<?>> ans = new LinkedList<>();
         LinkedList<ComputedRef<?>> nextList = new LinkedList<>();
         Map<ComputedRef<?>, Integer> inDegreeMap = new HashMap<>();

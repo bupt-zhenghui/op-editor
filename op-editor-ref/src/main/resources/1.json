@@ -1,0 +1,15 @@
+{
+    "$schema": "formula-schema.json",
+    "operatorName": "add-int",
+    "args": [
+        {
+            "operatorName": "ref",
+            "literalType": "int",
+            "literal": "1"
+        },
+        {
+            "operatorName": "ref",
+            "refId": "62f29985893d1a7e9535126a"
+        }
+    ]
+}

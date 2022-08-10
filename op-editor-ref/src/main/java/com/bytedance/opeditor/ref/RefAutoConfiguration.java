@@ -2,6 +2,7 @@ package com.bytedance.opeditor.ref;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * @author fordring
@@ -9,5 +10,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @ComponentScan
 @Configuration
+@EnableMongoRepositories("com.bytedance.opeditor.ref.mapper")
 public class RefAutoConfiguration {
 }

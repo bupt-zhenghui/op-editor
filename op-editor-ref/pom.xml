@@ -24,6 +24,10 @@
             <groupId>com.bytedance</groupId>
             <artifactId>formula</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.bytedance</groupId>
+            <artifactId>op-editor-redis</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

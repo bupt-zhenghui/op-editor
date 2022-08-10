@@ -14,7 +14,7 @@ import java.util.List;
 public class IntParser implements LiteralParser {
     @Override
     public Ref<?> parse(String value, String type) {
-        return new IntRef(Integer.valueOf(value));
+        return new IntRef(value==null? null:Integer.valueOf(value));
     }
 
     @Override

@@ -124,6 +124,11 @@
                 <artifactId>formula</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.bytedance</groupId>
+                <artifactId>op-editor-ref</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

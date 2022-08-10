@@ -12,4 +12,5 @@ import java.util.List;
  */
 @Repository
 public interface RefMapper extends MongoRepository<RefEntity, String> {
+    List<RefEntity> findAllByIdIn(List<String> ids);
 }

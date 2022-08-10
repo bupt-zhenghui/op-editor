@@ -63,4 +63,11 @@ public class FormulaParser {
         if(parser==null) throw new UnsupportedOperationException("找不到支持["+type+"]类型字面量的解析器");
         return (Ref<T>) parser.parse(value, type);
     }
+
+    public static String writeLiteralToString(Ref<?> ref) {
+        return Optional.ofNullable(ref.value()).map(Object::toString).orElse(null);
+    }
+    public static String writeLiteralToString(Object value, String type) {
+        return Optional.ofNullable(value).map(Object::toString).orElse(null);
+    }
 }

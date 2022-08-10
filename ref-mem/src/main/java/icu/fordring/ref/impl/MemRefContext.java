@@ -1,8 +1,5 @@
 package icu.fordring.ref.impl;
 
-import com.google.common.base.Functions;
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
 import icu.fordring.ref.Ref;
 import icu.fordring.ref.Watcher;
 import icu.fordring.ref.refs.ComputedRef;
@@ -41,7 +38,7 @@ public class MemRefContext extends BasicRefContext{
     }
 
     @Override
-    protected Iterable<ComputedRef<?>> getRely(Ref<?> ref) {
+    protected List<ComputedRef<?>> getRely(Ref<?> ref) {
         Set<ComputedRef<?>> refs = relyMap.get(ref);
         if (refs==null) return null;
         Map<ComputedRef<?>, Set<ComputedRef<?>>> map = new HashMap<>();
